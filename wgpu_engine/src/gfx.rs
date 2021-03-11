@@ -10,7 +10,7 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 use wgpu::util::{BufferInitDescriptor, DeviceExt};
 use wgpu::{
-    Adapter, BindGroupLayout, CommandEncoder, CommandEncoderDescriptor, CullMode, Device,
+    Adapter, BindGroupLayout, BlendComponent, CommandEncoder, CommandEncoderDescriptor, Device,
     IndexFormat, MultisampleState, PrimitiveState, Queue, RenderPipeline, StencilState, Surface,
     SwapChain, SwapChainDescriptor, SwapChainFrame, VertexBufferLayout,
 };
@@ -334,18 +334,20 @@ impl GfxContext {
 
         let color_states = [wgpu::ColorTargetState {
             format: self.color_texture.target.format,
-            color_blend: wgpu::BlendState {
-                src_factor: wgpu::BlendFactor::SrcAlpha,
-                dst_factor: wgpu::BlendFactor::OneMinusSrcAlpha,
-                operation: wgpu::BlendOperation::Add,
-            },
-            alpha_blend: wgpu::BlendState::REPLACE,
+            blend: Some(wgpu::BlendState {
+                color: BlendComponent {
+                    src_factor: wgpu::BlendFactor::SrcAlpha,
+                    dst_factor: wgpu::BlendFactor::OneMinusSrcAlpha,
+                    operation: wgpu::BlendOperation::Add,
+                },
+                alpha: BlendComponent::REPLACE,
+            }),
             write_mask: wgpu::ColorWrite::ALL,
         }];
 
         let render_pipeline_desc = wgpu::RenderPipelineDescriptor {
             label: None,
-            layout: Some(&render_pipeline_layout),
+            layout: None,
             vertex: wgpu::VertexState {
                 module: &vs_module,
                 entry_point: "main",
@@ -358,7 +360,7 @@ impl GfxContext {
             }),
             primitive: PrimitiveState {
                 topology: wgpu::PrimitiveTopology::TriangleList,
-                cull_mode: CullMode::None,
+                cull_mode: None,
                 ..Default::default()
             },
             depth_stencil: Some(wgpu::DepthStencilState {

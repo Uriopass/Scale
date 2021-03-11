@@ -82,12 +82,14 @@ impl Drawable for LightBlit {
 
         let color_states = [wgpu::ColorTargetState {
             format: gfx.light_texture.format,
-            color_blend: wgpu::BlendState {
-                src_factor: BlendFactor::One,
-                dst_factor: BlendFactor::One,
-                operation: wgpu::BlendOperation::Add,
-            },
-            alpha_blend: wgpu::BlendState::REPLACE,
+            blend: Some(wgpu::BlendState {
+                color: wgpu::BlendComponent {
+                    src_factor: BlendFactor::One,
+                    dst_factor: BlendFactor::One,
+                    operation: wgpu::BlendOperation::Add,
+                },
+                alpha: wgpu::BlendComponent::REPLACE,
+            }),
             write_mask: wgpu::ColorWrite::ALL,
         }];
 
@@ -154,8 +156,10 @@ impl Drawable for LightMultiply {
 
         let color_states = [wgpu::ColorTargetState {
             format: gfx.sc_desc.format,
-            color_blend: wgpu::BlendState::REPLACE,
-            alpha_blend: wgpu::BlendState::REPLACE,
+            blend: Some(wgpu::BlendState {
+                color: wgpu::BlendComponent::REPLACE,
+                alpha: wgpu::BlendComponent::REPLACE,
+            }),
             write_mask: wgpu::ColorWrite::ALL,
         }];
 
@@ -245,7 +249,9 @@ impl VBDesc for LightInstance {
         wgpu::VertexBufferLayout {
             array_stride: std::mem::size_of::<LightInstance>() as wgpu::BufferAddress,
             step_mode: wgpu::InputStepMode::Instance,
-            attributes: Box::leak(Box::new(wgpu::vertex_attr_array![2 => Float2, 3 => Float])),
+            attributes: Box::leak(Box::new(
+                wgpu::vertex_attr_array![2 => Float32x2, 3 => Float32],
+            )),
         }
     }
 }

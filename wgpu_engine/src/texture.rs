@@ -87,7 +87,7 @@ impl Texture {
         let extent = wgpu::Extent3d {
             width: dimensions.0,
             height: dimensions.1,
-            depth: 1,
+            depth_or_array_layers: 1,
         };
 
         let (format, data, pixwidth): (TextureFormat, &[u8], u32) = match img {
@@ -148,7 +148,7 @@ impl Texture {
         let extent = wgpu::Extent3d {
             width: sc_desc.width,
             height: sc_desc.height,
-            depth: 1,
+            depth_or_array_layers: 1,
         };
         let desc = wgpu::TextureDescriptor {
             format,
@@ -228,7 +228,7 @@ impl Texture {
             size: Extent3d {
                 width: sc_desc.width,
                 height: sc_desc.height,
-                depth: 1,
+                depth_or_array_layers: 1,
             },
             usage: TextureUsage::RENDER_ATTACHMENT,
             mip_level_count: 1,
@@ -397,7 +397,7 @@ fn generate_mipmaps(
         primitive: wgpu::PrimitiveState {
             topology: wgpu::PrimitiveTopology::TriangleStrip,
             front_face: wgpu::FrontFace::Ccw,
-            cull_mode: wgpu::CullMode::None,
+            cull_mode: None,
             ..Default::default()
         },
         depth_stencil: None,

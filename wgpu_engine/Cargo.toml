@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 geom      = { path = "../geom" }
 common    = { path = "../common" }
-wgpu      = "0.7.0"
+wgpu      = {git = "https://github.com/gfx-rs/wgpu-rs" }
 bytemuck  = "1.4.1"
 mint      = "0.5.6"
 image     = { version = "0.23.4", default-features = false, features = ["png"] }

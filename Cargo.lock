@@ -329,6 +329,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "codespan-reporting"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3538270d33cc669650c4b093848450d380def10c331d38c768e34cac80576e6e"
+dependencies = [
+ "termcolor",
+ "unicode-width",
+]
+
+[[package]]
 name = "color_quant"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -610,11 +620,10 @@ dependencies = [
 [[package]]
 name = "d3d12"
 version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0a60cceb22c7c53035f8980524fdc7f17cf49681a3c154e6757d30afbec6ec4"
+source = "git+https://github.com/gfx-rs/d3d12-rs?rev=be19a243b86e0bafb9937d661fc8eabb3e42b44e#be19a243b86e0bafb9937d661fc8eabb3e42b44e"
 dependencies = [
  "bitflags",
- "libloading 0.6.7",
+ "libloading 0.7.0",
  "winapi 0.3.9",
 ]
 
@@ -1007,8 +1016,7 @@ dependencies = [
 [[package]]
 name = "gfx-auxil"
 version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e7b33ecf067f2117668d91c9b0f2e5f223ebd1ffec314caa2f3de27bb580186d"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "fxhash",
  "gfx-hal",
@@ -1018,14 +1026,13 @@ dependencies = [
 [[package]]
 name = "gfx-backend-dx11"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f851d03c2e8f117e3702bf41201a4fafa447d5cb1276d5375870ae7573d069dd"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "arrayvec",
  "bitflags",
  "gfx-auxil",
  "gfx-hal",
- "libloading 0.6.7",
+ "libloading 0.7.0",
  "log",
  "parking_lot",
  "range-alloc",
@@ -1040,8 +1047,7 @@ dependencies = [
 [[package]]
 name = "gfx-backend-dx12"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "36dc6ba2b7647e2c2b27b8f74ff5ccdd53c703776588eee5b1de515fdcbd6bc9"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "arrayvec",
  "bit-set",
@@ -1061,8 +1067,7 @@ dependencies = [
 [[package]]
 name = "gfx-backend-empty"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f07ef26a65954cfdd7b4c587f485100d1bb3b0bd6a51b02d817d6c87cca7a91"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "gfx-hal",
  "log",
@@ -1071,20 +1076,20 @@ dependencies = [
 
 [[package]]
 name = "gfx-backend-gl"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c6717c50ab601efe4a669bfb44db615e3888695ac8263222aeaa702642b9fbc2"
+version = "0.7.0"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "arrayvec",
  "bitflags",
+ "fxhash",
  "gfx-auxil",
  "gfx-hal",
  "glow",
  "js-sys",
  "khronos-egl",
- "libloading 0.6.7",
+ "libloading 0.7.0",
  "log",
- "naga",
+ "naga 0.3.1",
  "parking_lot",
  "raw-window-handle",
  "spirv_cross",
@@ -1095,8 +1100,7 @@ dependencies = [
 [[package]]
 name = "gfx-backend-metal"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8dc54b456ece69ef49f8893269ebf24ac70969ed34ba2719c3f3abcc8fbff14e"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "arrayvec",
  "bitflags",
@@ -1104,11 +1108,12 @@ dependencies = [
  "cocoa-foundation",
  "copyless",
  "foreign-types",
+ "fxhash",
  "gfx-auxil",
  "gfx-hal",
  "log",
  "metal",
- "naga",
+ "naga 0.3.1",
  "objc",
  "parking_lot",
  "range-alloc",
@@ -1120,8 +1125,7 @@ dependencies = [
 [[package]]
 name = "gfx-backend-vulkan"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dabe88b1a5c91e0f969b441cc57e70364858066e4ba937deeb62065654ef9bd9"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "arrayvec",
  "ash",
@@ -1130,7 +1134,7 @@ dependencies = [
  "gfx-hal",
  "inplace_it",
  "log",
- "naga",
+ "naga 0.3.1",
  "objc",
  "parking_lot",
  "raw-window-handle",
@@ -1141,11 +1145,10 @@ dependencies = [
 [[package]]
 name = "gfx-hal"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1d9cc8d3b573dda62d0baca4f02e0209786e22c562caff001d77c389008781d"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 dependencies = [
  "bitflags",
- "naga",
+ "naga 0.3.1",
  "raw-window-handle",
  "thiserror",
 ]
@@ -1318,8 +1321,7 @@ dependencies = [
 [[package]]
 name = "imgui-wgpu"
 version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79d5d73b68effcb4bcb89048e8c437e01c6d5675247d664188c584ce4d6d9696"
+source = "git+https://github.com/francesco-cattoglio/imgui-wgpu-rs?branch=tracking_wgpu_75e77d1#8309e87d32b99bb6f31a16d24fa3c579fb25970a"
 dependencies = [
  "bytemuck",
  "imgui",
@@ -1491,12 +1493,12 @@ dependencies = [
 
 [[package]]
 name = "khronos-egl"
-version = "3.0.2"
+version = "4.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b19cc4a81304db2a0ad69740e83cdc3a9364e3f9bd6d88a87288a4c2deec927b"
+checksum = "7e8cc4d128654d2191681ab98140c4d99e4bd9333efe1526e033586a5a061e1e"
 dependencies = [
  "libc",
- "libloading 0.6.7",
+ "libloading 0.7.0",
 ]
 
 [[package]]
@@ -1727,8 +1729,7 @@ dependencies = [
 [[package]]
 name = "metal"
 version = "0.21.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4598d719460ade24c7d91f335daf055bf2a7eec030728ce751814c50cdd6a26c"
+source = "git+https://github.com/gfx-rs/metal-rs?rev=439c986eb7a9b91e88b61def2daa66e4043fcbef#439c986eb7a9b91e88b61def2daa66e4043fcbef"
 dependencies = [
  "bitflags",
  "block",
@@ -1833,6 +1834,22 @@ dependencies = [
 
 [[package]]
 name = "naga"
+version = "0.3.1"
+source = "git+https://github.com/gfx-rs/naga?tag=gfx-13#f5ee79191223e4ebe323a728f4de40830b8d10f6"
+dependencies = [
+ "bit-set",
+ "bitflags",
+ "codespan-reporting",
+ "fxhash",
+ "log",
+ "num-traits",
+ "petgraph",
+ "spirv_headers",
+ "thiserror",
+]
+
+[[package]]
+name = "naga"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05089b2acdf0e6a962cdbf5e328402345a27f59fcde1a59fe97a73e8149d416f"
@@ -1842,7 +1859,6 @@ dependencies = [
  "fxhash",
  "log",
  "num-traits",
- "petgraph",
  "pomelo",
  "spirv_headers",
  "thiserror",
@@ -2385,8 +2401,7 @@ dependencies = [
 [[package]]
 name = "range-alloc"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "63e935c45e09cc6dcf00d2f0b2d630a58f4095320223d47fc68918722f0538b6"
+source = "git+https://github.com/gfx-rs/gfx?rev=cd96e77952dd2e330fe2c31f768203eef47a0d6a#cd96e77952dd2e330fe2c31f768203eef47a0d6a"
 
 [[package]]
 name = "raw-window-handle"
@@ -2804,6 +2819,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "termcolor"
+version = "1.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2dfed899f0eb03f32ee8c6a0aabdb8a7949659e3466561fc0adf54e26d88c5f4"
+dependencies = [
+ "winapi-util",
+]
+
+[[package]]
 name = "thiserror"
 version = "1.0.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2905,9 +2929,9 @@ dependencies = [
 
 [[package]]
 name = "tracing-attributes"
-version = "0.1.13"
+version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8a9bd1db7706f2373a190b0d067146caa39350c486f3d455b0e33b431f94c07"
+checksum = "41768be5b9f3489491825f56f01f25290aa1d3e7cc97e182d4d34360493ba6fa"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2946,6 +2970,12 @@ checksum = "07fbfce1c8a97d547e8b5334978438d9d6ec8c20e38f56d4a4374d181493eaef"
 dependencies = [
  "tinyvec",
 ]
+
+[[package]]
+name = "unicode-width"
+version = "0.1.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9337591893a19b88d8d87f2cec1e73fad5cdfd10e5a6f349f498ad6ea2ffb1e3"
 
 [[package]]
 name = "unicode-xid"
@@ -3209,12 +3239,11 @@ dependencies = [
 [[package]]
 name = "wgpu"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c60007fc3748278a36b458d96f86105f43aa5f0e412b15a5f934950d61ec26a9"
+source = "git+https://github.com/gfx-rs/wgpu-rs#b3efd07b20de55e7a1ef0abe30dd67e950b15b0b"
 dependencies = [
  "arrayvec",
  "js-sys",
- "naga",
+ "naga 0.3.1",
  "parking_lot",
  "raw-window-handle",
  "smallvec",
@@ -3228,9 +3257,8 @@ dependencies = [
 
 [[package]]
 name = "wgpu-core"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c89fa2cc5d72236461ac09c5be967012663e29cb62f1a972654cbf35e49dffa8"
+version = "0.7.0"
+source = "git+https://github.com/gfx-rs/wgpu?rev=0fa52d3826ec8fe8f6177a558922085fe7d0e0cc#0fa52d3826ec8fe8f6177a558922085fe7d0e0cc"
 dependencies = [
  "arrayvec",
  "bitflags",
@@ -3246,7 +3274,7 @@ dependencies = [
  "gfx-hal",
  "gpu-alloc",
  "gpu-descriptor",
- "naga",
+ "naga 0.3.1",
  "parking_lot",
  "raw-window-handle",
  "smallvec",
@@ -3258,8 +3286,7 @@ dependencies = [
 [[package]]
 name = "wgpu-types"
 version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72fa9ba80626278fd87351555c363378d08122d7601e58319be3d6fa85a87747"
+source = "git+https://github.com/gfx-rs/wgpu?rev=0fa52d3826ec8fe8f6177a558922085fe7d0e0cc#0fa52d3826ec8fe8f6177a558922085fe7d0e0cc"
 dependencies = [
  "bitflags",
 ]
@@ -3274,7 +3301,7 @@ dependencies = [
  "image",
  "log",
  "mint",
- "naga",
+ "naga 0.3.2",
  "raw-window-handle",
  "wgpu",
 ]

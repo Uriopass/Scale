@@ -27,12 +27,14 @@ impl Drawable for BlitLinear {
 
         let color_states = [wgpu::ColorTargetState {
             format: gfx.sc_desc.format,
-            color_blend: wgpu::BlendState {
-                src_factor: BlendFactor::SrcAlpha,
-                dst_factor: BlendFactor::OneMinusSrcAlpha,
-                operation: BlendOperation::Add,
-            },
-            alpha_blend: wgpu::BlendState::REPLACE,
+            blend: Some(wgpu::BlendState {
+                color: wgpu::BlendComponent {
+                    src_factor: BlendFactor::SrcAlpha,
+                    dst_factor: BlendFactor::OneMinusSrcAlpha,
+                    operation: BlendOperation::Add,
+                },
+                alpha: wgpu::BlendComponent::REPLACE,
+            }),
             write_mask: wgpu::ColorWrite::ALL,
         }];
 

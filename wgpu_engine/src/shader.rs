@@ -30,7 +30,7 @@ fn mk_module(s: ShaderSource) -> ShaderModuleDescriptor {
     wgpu::ShaderModuleDescriptor {
         label: None,
         source: s,
-        flags: ShaderFlags::VALIDATION,
+        flags: ShaderFlags::default(),
     }
 }
 

@@ -58,9 +58,9 @@ impl log::Log for MyLog {
             return false;
         }
         match metadata.target() {
-            "wgpu_core" | "gfx_memory" | "gfx_backend_vulkan" | "gfx_descriptor" => {
+            /*"wgpu_core" | "gfx_memory" | "gfx_backend_vulkan" | "gfx_descriptor" => {
                 l <= Level::Warn
-            }
+            }*/
             _ => true,
         }
     }

@@ -15,7 +15,9 @@ impl VBDesc for ColoredVertex {
         wgpu::VertexBufferLayout {
             array_stride: mem::size_of::<ColoredVertex>() as wgpu::BufferAddress,
             step_mode: wgpu::InputStepMode::Vertex,
-            attributes: Box::leak(Box::new(wgpu::vertex_attr_array![0 => Float3, 1 => Float4])),
+            attributes: Box::leak(Box::new(
+                wgpu::vertex_attr_array![0 => Float32x3, 1 => Float32x4],
+            )),
         }
     }
 }

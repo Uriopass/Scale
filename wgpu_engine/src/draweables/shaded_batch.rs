@@ -40,7 +40,7 @@ impl VBDesc for ShadedInstanceRaw {
             array_stride: std::mem::size_of::<ShadedInstanceRaw>() as wgpu::BufferAddress,
             step_mode: wgpu::InputStepMode::Instance,
             attributes: Box::leak(Box::new(
-                wgpu::vertex_attr_array![2 => Float3, 3 => Float2, 4 => Float2, 5 => Float4],
+                wgpu::vertex_attr_array![2 => Float32x3, 3 => Float32x2, 4 => Float32x2, 5 => Float32x4],
             )),
         }
     }

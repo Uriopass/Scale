@@ -17,7 +17,7 @@ common        = { path = "../common" }
 mint          = "0.5.6"
 imgui-inspect = { path = "../imgui-inspect" }
 imgui-inspect-derive = { path = "../imgui-inspect-derive" }
-imgui-wgpu    = "0.14.0"
+imgui-wgpu    = {git = "https://github.com/francesco-cattoglio/imgui-wgpu-rs", branch="tracking_wgpu_75e77d1"}
 imgui-winit-support = "0.7.0"
 map_model     = { path = "../map_model" }
 flat_spatial  = { path = "../flat_spatial" }
